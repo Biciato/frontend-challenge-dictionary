@@ -1,0 +1,30 @@
+
+<div *ngIf="wordService.wordMeaning && !wordService.fetchError" class="word-meaning-container">
+    <mat-card>
+        <mat-card-title>{{ wordService.wordMeaning.word }}</mat-card-title>
+        <mat-card-subtitle>{{ wordService.wordMeaning.phonetic }}</mat-card-subtitle>
+        <mat-card-actions align="end">
+            <button 
+                mat-raised-button 
+                [color]="favoriteWordsService.favoriteWords.includes(wordService.wordMeaning.word) ? 'warn' : 'accent'"
+                (click)="onFavoriteClick(wordService.wordMeaning.word)">
+                    {{ 
+                        favoriteWordsService.favoriteWords.includes(wordService.wordMeaning.word) 
+                            ? 'Remove from Favorite' 
+                            : 'Add to Favorite' 
+                    }}
+            </button>
+        </mat-card-actions>
+    </mat-card>
+    <h1>Meanings</h1>
+    <mat-divider></mat-divider>
+    <div *ngFor="let meaning of wordService.wordMeaning.meanings">
+        <mat-chip-list>
+            <mat-chip color="primary" selected>{{ meaning.partOfSpeech }}</mat-chip>
+        </mat-chip-list>
+        <div *ngFor="let obj of meaning.definitions">
+            <p>{{ obj.definition }}</p>
+        </div>
+    </div>
+</div>
+<p *ngIf="wordService.fetchError" class="error">Sorry, we couldn't find the word you selected!!</p>

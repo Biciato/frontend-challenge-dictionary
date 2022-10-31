@@ -1,0 +1,6 @@
+<h1>Words Visited</h1>
+<h3 *ngIf="wordHistoryService.wordHistory.length === 0">None word visited yet</h3>
+<mat-divider></mat-divider>
+<mat-list role="list">
+    <mat-list-item *ngFor="let word of wordHistoryService.wordHistory">{{ word }}</mat-list-item>
+</mat-list>

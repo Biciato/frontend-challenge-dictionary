@@ -1,0 +1,6 @@
+<h1>Favorite Words</h1>
+<h3 *ngIf="favoriteWordsService.favoriteWords.length === 0">You have no favorite word</h3>
+<mat-divider></mat-divider>
+<mat-list role="list">
+    <mat-list-item *ngFor="let word of favoriteWordsService.favoriteWords">{{ word }}</mat-list-item>
+</mat-list>

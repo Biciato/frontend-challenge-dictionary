@@ -1,0 +1,14 @@
+.mat-tab-group {
+    margin: auto;
+}
+
+@media screen and (min-width: 720px) {
+    :host {
+        max-width: 800px;
+        display: flex;
+        flex-wrap: wrap;
+        padding: 5% 10%;
+        justify-content: space-between;
+        margin: auto;
+    }
+}

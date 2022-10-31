@@ -1,0 +1,46 @@
+<div id="login">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Login</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Usuário</mat-label>
+        <input matInput type="hide" [formControl]="loginForm.controls.email" />
+        <mat-icon
+          matSuffix
+          svgIcon="user"
+          aria-hidden="false"
+          aria-label="User icon"></mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Senha</mat-label>
+        <input
+          matInput
+          [type]="hide ? 'password' : 'text'"
+          [formControl]="loginForm.controls.password" />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hide = !hide"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide">
+          <mat-icon [svgIcon]="hide ? 'invisibility' : 'visibility'"></mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-card-content>
+    <mat-divider inset></mat-divider>
+    <mat-card-actions>
+      <button
+        mat-raised-button
+        color="primary"
+        [disabled]="!loginForm.valid"
+        (click)="onSubmit()">
+        Entrar
+      </button>
+    </mat-card-actions>
+    <mat-card-footer>
+      <mat-progress-bar mode="indeterminate" *ngIf="loading"></mat-progress-bar>
+    </mat-card-footer>
+  </mat-card>
+</div>

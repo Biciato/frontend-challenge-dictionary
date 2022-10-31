@@ -1,0 +1,19 @@
+<h1>Word list</h1>
+<div class="content" 
+    infinite-scroll
+    [infiniteScrollDistance]="1"
+    [infiniteScrollThrottle]="300"
+    [scrollWindow]="false"
+    (scrolled)="onScrollDown()">
+    <mat-list>
+        <mat-grid-list cols="3" rowHeight="2:1">
+            <mat-grid-tile 
+                *ngFor="let word of showList" 
+                (click)="onWordSelect(word)" 
+                [style.background]="'#3f51b5'">
+                {{ word }}
+            </mat-grid-tile>
+        </mat-grid-list>
+    </mat-list>
+</div>
+<mat-divider></mat-divider>

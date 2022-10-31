@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  web:
+    # image: "node:16.17.1-alpine"
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: dev
+    user: node
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=production
+    ports:
+      - "4200:4200"
+    volumes:
+      - node_modules:/home/node/app/node_modules
+      - ./:/home/node/app
+    expose:
+      - "4200"
+
+    ## to use command: "npm start" you need in package.json
+    ## scripts:
+    ##   "start": "ng serve --host 0.0.0.0 --port 4200",
+    #command: "npm start" 
+
+    command: "npx ng serve --host 0.0.0.0 --port 4200"
+
+volumes:
+  node_modules:
